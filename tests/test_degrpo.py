@@ -2,7 +2,7 @@
 
 from trace_core.degrpo import calculate_degrpo_loss
 import tensorflow as tf
-import pytest # Pytest is the framework we use for testing
+import pytest  # Pytest is the framework we use for testing
 
 
 def test_loss_function_returns_scalar_tensor():
