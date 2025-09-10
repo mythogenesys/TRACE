@@ -1,0 +1,40 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[margin=1in]{geometry}
+
+\title{The Core Tenets of Emergent Machine Pedagogy (EMP) \\ for the TRACE Project}
+\author{Mohana Rangan Desigan}
+\date{\today}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{hypothesis}{Hypothesis}[section]
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+    This document formally states the core theoretical predictions of the TRACE (Tradeoff-Regularized Agent Curriculum Engine) framework. These theorems serve as the foundational hypotheses for our empirical investigation.
+\end{abstract}
+
+\section{Formal Statements}
+
+We posit that an effective autonomous curriculum must balance two competing objectives: exploiting known good states and exploring diverse, potentially informative states. The TRACE algorithm is designed as a direct implementation of this theory. Our framework predicts the following empirically verifiable phenomena.
+
+\begin{hypothesis}[The Exploration-Exploitation Tradeoff]
+    \label{thm:tradeoff}
+    For a given reinforcement learning task of sufficient complexity, there exists an optimal, non-zero value for the diversity regularization coefficient, $\beta^* > 0$. The asymptotic performance of an agent trained with the DE-GRPO objective function will be a non-monotonic function of $\beta$, achieving a maximum in the neighborhood of $\beta^*$. Performance will be suboptimal for $\beta=0$ (pure PPO) and for $\beta \gg \beta^*$ (over-emphasis on diversity).
+\end{hypothesis}
+
+\begin{hypothesis}[The Competence-Based Curriculum Threshold]
+    \label{thm:threshold}
+    In a curriculum-based environment with discrete difficulty levels, there exists a performance threshold $\tau$ at which the agent's competence is sufficient to benefit from increased task complexity. Increasing the difficulty before the agent's performance surpasses $\tau$ will be detrimental to learning. An agent guided by the SSCA mechanism will therefore exhibit a phase transition in its learning curve, corresponding to the moment it surpasses this competence threshold.
+\end{hypothesis}
+
+\begin{hypothesis}[The Generalization Advantage]
+    \label{thm:generalization}
+    An agent trained with the full TRACE framework (DE-GRPO and SSCA) will exhibit superior zero-shot generalization to out-of-distribution (OOD) variations of the training environment compared to baseline agents. This is because the diversity regularization ($\beta > 0$) forces the agent to discover a more robust and comprehensive state-action mapping, rather than overfitting to the idiosyncrasies of the training environment.
+\end{hypothesis}
+
+\end{document}
